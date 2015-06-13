@@ -16,3 +16,6 @@ hs_err_pid*
 tmp/
 test-result/
 eclipse/
+/modules
+/lib
+/logs
