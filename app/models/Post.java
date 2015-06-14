@@ -6,18 +6,26 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.Type;
 
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
 import play.db.jpa.*;
  
 @Entity
 public class Post extends Model {
  
+	@Required
     public String title;
+	
+	@Required
     public Date postedAt;
     
     @Lob
+    @Required
     @Type(type = "org.hibernate.type.TextType")
+    @MaxSize(10000)
     public String content;
     
+    @Required
     @ManyToOne
     public User author;
     
@@ -69,5 +77,10 @@ public class Post extends Model {
             "select distinct p from Post p join p.tags as t where t.name in (:tags) " +
             "group by p.id, p.author, p.title, p.content,p.postedAt having count(t.id) = :size"
         ).bind("tags", tags).bind("size", tags.length).fetch();
+    }
+    
+    @Override
+    public String toString() {
+    	return this.title;
     }
 }
