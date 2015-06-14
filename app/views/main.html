@@ -3,6 +3,7 @@
     <head>
         <title>#{get 'title' /}</title>		
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        #{get 'moreStyles' /}	
         <link rel="stylesheet" type="text/css" media="screen" 
             href="@{'/public/stylesheets/main.css'}" />
         <link rel="shortcut icon" type="image/png" 
@@ -19,7 +20,7 @@
             </div>
             <ul id="tools">
                 <li>
-                    <a href="#">Log in to write something</a>
+                    <a href="@{Admin.index()}">Log in to write something</a>
                 </li>
             </ul>
             <div id="title">
